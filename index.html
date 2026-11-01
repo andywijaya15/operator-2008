@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>OPERATOR 2008 - Shift Malam</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="crt-overlay" class="crt"></div>
+
+  <!-- Audio Start Modal -->
+  <div id="start-screen" class="modal-backdrop">
+    <div class="xp-window start-dialog">
+      <div class="xp-titlebar">
+        <span>CyberNet Billing v2.4 - Login Operator</span>
+      </div>
+      <div class="xp-body">
+        <p><strong>WARNET BERKAH JAYA</strong></p>
+        <p>Shift Malam: 02:00 - 03:00 WIB</p>
+        <p class="hint">Pastikan billing pelanggan terlayani, cek CCTV berkala, dan abaikan gangguan di Bilik 4.</p>
+        <button id="btn-start" class="xp-btn primary">MASUK SHIFT (MULAI)</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="desktop">
+    <!-- Top System Bar -->
+    <header id="top-bar">
+      <div class="stat-badge">🕒 <span id="clock-display">02:00 WIB</span></div>
+      <div class="stat-badge">💰 Pendapatan: <span id="cash-display">Rp 12.000</span></div>
+      <div class="stat-badge">⚡ Daya Listrik: <span id="power-display">100%</span></div>
+      <div class="stat-badge danger-text" id="status-alert">STATUS: NORMAL</div>
+    </header>
+
+    <!-- Workspace Grid -->
+    <main id="workspace">
+      <!-- Billing System Window -->
+      <section class="xp-window" id="win-billing">
+        <div class="xp-titlebar">
+          <span>🖥️ Billing Explorer - Client Manager</span>
+          <div class="win-controls"><span>_</span><span>□</span><span>×</span></div>
+        </div>
+        <div class="xp-body no-pad">
+          <div class="table-container">
+            <table id="billing-table">
+              <thead>
+                <tr>
+                  <th>PC</th>
+                  <th>User</th>
+                  <th>Paket</th>
+                  <th>Sisa Waktu</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="client-list">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- CCTV Window -->
+      <section class="xp-window" id="win-cctv">
+        <div class="xp-titlebar">
+          <span>📹 CCTV Surveillance 4CH</span>
+          <div class="win-controls"><span>_</span><span>□</span><span>×</span></div>
+        </div>
+        <div class="xp-body cctv-body">
+          <div class="cctv-tabs">
+            <button class="cctv-btn active" data-cam="0">CAM 1: KASIR</button>
+            <button class="cctv-btn" data-cam="1">CAM 2: LORONG</button>
+            <button class="cctv-btn" data-cam="2">CAM 3: BILIK 4</button>
+            <button class="cctv-btn" data-cam="3">CAM 4: PINTU LUAR</button>
+          </div>
+          <div id="cctv-screen">
+            <canvas id="cctv-canvas" width="320" height="240"></canvas>
+            <div id="cctv-overlay-text">CAM 1: KASIR - REC ●</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Operator Messenger / Task Window -->
+      <section class="xp-window" id="win-chat">
+        <div class="xp-titlebar">
+          <span id="chat-title">💬 Operator Messenger (No New Messages)</span>
+          <div class="win-controls"><span>_</span><span>□</span><span>×</span></div>
+        </div>
+        <div class="xp-body chat-body">
+          <div id="chat-log"></div>
+          <div class="chat-input-bar">
+            <input type="text" id="chat-input" placeholder="Balas pelanggan (atau pilih opsi)..." readonly>
+            <button id="chat-reply-btn" class="xp-btn" disabled>Balas</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Taskbar -->
+    <footer id="taskbar">
+      <button class="start-btn" id="taskbar-start">
+        <span class="flag">⊞</span> <strong>Mulai</strong>
+      </button>
+      <div class="taskbar-tasks">
+        <div class="task-tab active">Billing Explorer</div>
+        <div class="task-tab">CCTV Monitor</div>
+        <div class="task-tab">Messenger</div>
+      </div>
+      <div class="taskbar-tray">
+        <span id="tray-sound">🔊</span>
+        <span id="tray-time">02:00</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- End Game Modal -->
+  <div id="game-over-modal" class="modal-backdrop hidden">
+    <div class="xp-window start-dialog">
+      <div class="xp-titlebar">
+        <span id="game-over-title">Hasil Shift</span>
+      </div>
+      <div class="xp-body">
+        <p id="game-over-msg">Shift selesai.</p>
+        <button id="btn-restart" class="xp-btn primary">ULANGI SHIFT</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
